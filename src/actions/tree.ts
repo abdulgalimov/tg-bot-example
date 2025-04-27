@@ -7,7 +7,7 @@ const defaultTree = {
     command: {
       "@payloads": payloadSchema.object({
         command: payloadSchema.string(),
-        value: payloadSchema.string().optional(),
+        value: payloadSchema.string(),
       }),
     },
     text: {},
@@ -15,8 +15,12 @@ const defaultTree = {
 
   main: {
     menu: {},
-    ping: {}
-  }
+    ping: {
+      "@payloads": payloadSchema.object({
+        value: payloadSchema.number(),
+      }),
+    },
+  },
 };
 
 type TreeWithId = TreeNode<typeof defaultTree>;

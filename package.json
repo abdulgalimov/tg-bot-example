@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "npx tsx src/index.ts"
+    "dev": "npx tsx --watch src/index.ts"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@abdulgalimov/tg-framework": "/Users/abdulgalimov/work/tg-framework/tg-framework-package"
+    "@abdulgalimov/tg-framework": "/Users/abdulgalimov/work/tg-framework/tg-framework-package",
+    "prettier": "^3.5.3"
   },
   "devDependencies": {
     "@grammyjs/types": "^3.19.0",
