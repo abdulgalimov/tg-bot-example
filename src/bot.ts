@@ -1,6 +1,6 @@
 import { getContext, Telegram, UpdateResult } from "@abdulgalimov/tg-framework";
 
-import { DbExample, LocaleExample, StorageExample } from "./utils";
+import { LocaleExample, StorageExample } from "./utils";
 import { actionsTree } from "./actions";
 import { CoreHandler, MainHandler } from "./handlers";
 import { HandlerOptions } from "./handlers/base.handler";
@@ -16,7 +16,6 @@ export class Bot {
     this.tg = new Telegram({
       storage: new StorageExample(),
       locale: new LocaleExample(),
-      db: new DbExample(),
       tg: {
         apiUrl: "https://api.telegram.org",
         token: "7633108518:AAGOCbUkJ1L6PoDB03M0xDIolHsTJL8cxLo",
