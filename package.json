@@ -10,7 +10,9 @@
   "description": "",
   "dependencies": {
     "@abdulgalimov/tg-framework": "/Users/abdulgalimov/work/tg-framework/tg-framework-package",
-    "prettier": "^3.5.3"
+    "dotenv": "^16.5.0",
+    "prettier": "^3.5.3",
+    "reflect-metadata": "^0.2.2"
   },
   "devDependencies": {
     "@grammyjs/types": "^3.19.0",

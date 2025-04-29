@@ -1,7 +1,7 @@
-import { DataStorage, User } from "@abdulgalimov/tg-framework";
+import { StorageServiceExternal, User } from "@abdulgalimov/tg-framework";
 import { User as TgUser } from "@grammyjs/types/manage";
 
-export class StorageExample implements DataStorage {
+export class StorageExample implements StorageServiceExternal {
   private readonly data: Record<string, unknown> = {};
 
   public async setValue(key: string, value: any): Promise<void> {

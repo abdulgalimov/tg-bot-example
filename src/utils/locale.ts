@@ -1,6 +1,8 @@
-import { Locale } from "@abdulgalimov/tg-framework";
+import { LocaleServiceExternal, TextIcons } from "@abdulgalimov/tg-framework";
 
-export class LocaleExample implements Locale {
+export class LocaleExample implements LocaleServiceExternal {
+  public readonly textIcons: TextIcons = {};
+
   public text(
     languageCode: string,
     textCode: string,

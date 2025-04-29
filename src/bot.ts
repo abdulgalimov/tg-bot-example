@@ -1,42 +1,24 @@
-import { getContext, Telegram, UpdateResult } from "@abdulgalimov/tg-framework";
-
-import { LocaleExample, StorageExample } from "./utils";
+import {
+  getContext,
+  Inject,
+  Injectable,
+  Update,
+  UpdateResult,
+} from "@abdulgalimov/tg-framework";
 import { actionsTree } from "./actions";
 import { CoreHandler, MainHandler } from "./handlers";
-import { HandlerOptions } from "./handlers/base.handler";
 
+@Injectable()
 export class Bot {
-  private readonly tg: Telegram;
+  @Inject(CoreHandler)
+  private coreHandler!: CoreHandler;
 
-  private coreHandler: CoreHandler;
+  @Inject(MainHandler)
+  private mainHandler!: MainHandler;
 
-  private mainHandler: MainHandler;
+  public constructor() {}
 
-  public constructor() {
-    this.tg = new Telegram({
-      storage: new StorageExample(),
-      locale: new LocaleExample(),
-      tg: {
-        apiUrl: "https://api.telegram.org",
-        token: "7633108518:AAGOCbUkJ1L6PoDB03M0xDIolHsTJL8cxLo",
-      },
-      actionsTree,
-      handler: () => this.update(),
-    });
-
-    const options: HandlerOptions = {
-      tg: this.tg,
-    };
-
-    this.coreHandler = new CoreHandler(options);
-
-    this.mainHandler = new MainHandler(options);
-  }
-
-  public async init(): Promise<void> {
-    await this.tg.init();
-  }
-
+  @Update()
   private async update(): Promise<UpdateResult> {
     const ctx = getContext();
 
