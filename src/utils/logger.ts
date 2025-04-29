@@ -4,19 +4,23 @@ import * as console from "node:console";
 export class LoggerExample implements LogService {
   public name: string = "";
 
+  private log(level: string, ...args: unknown[]) {
+    console.log(`[${this.name}]`, level, ...args);
+  }
+
   public debug(...args: unknown[]) {
-    console.log(this.name, ...args);
+    this.log("DEBUG", ...args);
   }
 
   public info(...args: unknown[]) {
-    console.info(this.name, ...args);
+    this.log("INFO", ...args);
   }
 
   public warn(...args: unknown[]) {
-    console.warn(this.name, ...args);
+    this.log("WARN", ...args);
   }
 
   public error(...args: unknown[]) {
-    console.error(this.name, ...args);
+    this.log("ERROR", ...args);
   }
 }

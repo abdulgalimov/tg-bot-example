@@ -1,4 +1,5 @@
 import {
+  ApiService,
   Context,
   ContextAny,
   ContextService,
@@ -17,6 +18,9 @@ export class MainHandler extends BaseHandler {
   @Inject(ContextService)
   private contextService!: ContextService;
 
+  @Inject(ApiService)
+  private apiService!: ApiService;
+
   @Inject(PayloadService)
   private payloadService!: PayloadService;
 
@@ -30,6 +34,8 @@ export class MainHandler extends BaseHandler {
         return await this.ping(
           ctx as Context<{ action: typeof actionsTree.main.ping }>,
         );
+      case actionsTree.main.sendPhoto:
+        return await this.sendPhoto(ctx);
     }
   }
 
@@ -44,6 +50,14 @@ export class MainHandler extends BaseHandler {
               callback_data: this.payloadService.encode(actionsTree.main.ping, {
                 value: 1,
               }),
+            },
+          ],
+          [
+            {
+              text: "send photo",
+              callback_data: this.payloadService.encode(
+                actionsTree.main.sendPhoto,
+              ),
             },
           ],
         ],
@@ -72,5 +86,30 @@ export class MainHandler extends BaseHandler {
         ],
       },
     });
+  }
+
+  private async sendPhoto(ctx: ContextAny) {
+    const { user } = ctx;
+
+    const url = "https://picsum.photos/200/300";
+    await this.apiService.methods.sendPhoto({
+      caption: "photo",
+      chat_id: user.telegramId,
+      photo: url,
+    });
+
+    /*
+    const sendFile: SendFile = {
+      stream: fs.createReadStream("images/photo.jpg"),
+      filename: "photo.jpg",
+      contentType: "image/jpeg",
+    };
+
+    await this.apiService.sendDocument({
+      caption: "photo",
+      chat_id: user.telegramId,
+      document: sendFile,
+    });
+     */
   }
 }

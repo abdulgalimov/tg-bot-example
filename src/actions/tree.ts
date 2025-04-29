@@ -20,6 +20,7 @@ const defaultTree = {
         value: payloadSchema.number(),
       }),
     },
+    sendPhoto: {},
   },
 };
 
