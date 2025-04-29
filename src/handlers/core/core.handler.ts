@@ -6,10 +6,9 @@ import {
   UpdateResult,
 } from "@abdulgalimov/tg-framework";
 import { actionsTree } from "../../actions";
-import { BaseHandler } from "../base.handler";
 
 @Injectable()
-export class CoreHandler extends BaseHandler {
+export class CoreHandler {
   public async update() {
     const ctx = getContext();
 

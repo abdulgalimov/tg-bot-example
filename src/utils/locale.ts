@@ -8,6 +8,7 @@ export class LocaleExample implements LocaleServiceExternal {
     textCode: string,
     args?: Record<string, unknown>,
   ): string {
+    // return localization text
     return `${languageCode}: ${textCode}`;
   }
 }

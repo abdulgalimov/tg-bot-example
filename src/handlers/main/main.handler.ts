@@ -11,10 +11,9 @@ import {
 } from "@abdulgalimov/tg-framework";
 
 import { actionsTree } from "../../actions";
-import { BaseHandler } from "../base.handler";
 
 @Injectable()
-export class MainHandler extends BaseHandler {
+export class MainHandler {
   @Inject(ContextService)
   private contextService!: ContextService;
 
